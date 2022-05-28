@@ -30,11 +30,15 @@ LJYScrollKi用于处理单页面添加多个页面的复杂应用场景，包括
 
 ![ShareHeaderDemo](https://user-images.githubusercontent.com/10485682/170821348-0830cc26-df99-40d1-9b27-7ea1b9fbeef1.gif)
 
+
 ### ScrollPageHandler
 将view等分成若干页面，并为其添加左右翻页功能。
 
 ```objc
-    _scrollPageHandler = [[ScrollPageHandler alloc] initWithContentView:_containerView pageWidth:pageWidth currentPageIndex:0 pageCount:3];
+    _scrollPageHandler = [[ScrollPageHandler alloc] initWithContentView:_containerView 
+                                                              pageWidth:pageWidth 
+                                                       currentPageIndex:0 
+                                                              pageCount:3];
     _scrollPageHandler.scrollPageWillChangePage = ^(BOOL animated) {
         //翻页前调用
     };
@@ -46,6 +50,6 @@ LJYScrollKi用于处理单页面添加多个页面的复杂应用场景，包括
     /// 且方法内部会根据currentPageIndex重新计算contentView的偏移位置。
     [_scrollPageHandler updatePageWidth:nPageWidth];
 ```
-![ShareHeaderDemo](https://user-images.githubusercontent.com/10485682/170821348-0830cc26-df99-40d1-9b27-7ea1b9fbeef1.gif)
 
 ![scrollPageHandlerDemo](https://user-images.githubusercontent.com/10485682/170841315-7832acf2-751d-4953-8f7c-ea61472c476b.gif)
+
