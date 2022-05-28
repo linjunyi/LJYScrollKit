@@ -1,9 +1,13 @@
 # LJYScrollKit
-LJYScrollKi用于处理单页面添加多个页面的复杂应用场景，包括多级scrollview嵌套、左右翻页、自定义样式menu、单页面包含多个子功能页面等。
+LJYScrollKi用于处理单页面添加多个页面的复杂应用场景，包括
+ - 多级scrollview嵌套
+ - 为任意view添加左右翻页功能
+ - 自定义样式menu
+ - 单页面包含多个子功能页面
 
 ## 实现功能
 ### ShareHeaderScrollManager
-* 一个父ScrollView嵌套若干个子ScrollView, 实现父子ScrollView联动，且滑动到一定范围时顶部悬浮窗。
+一个父ScrollView嵌套若干个子ScrollView, 实现父子ScrollView联动，且滑动到一定范围时顶部悬浮。
 
 ```objc
     _scrollManager = [[ShareHeaderScrollManager alloc] initWithMainView:_mainScrollView scrollBlock:
