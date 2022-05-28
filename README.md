@@ -47,4 +47,5 @@ LJYScrollKi用于处理单页面添加多个页面的复杂应用场景，包括
     [_scrollPageHandler updatePageWidth:nPageWidth];
 ```
 
-![ScrollPageHandlerDemo](https://user-images.githubusercontent.com/10485682/170839968-30de5220-83c1-4d30-8070-bf139b5903e6.gif)
+![ScrollPageHandler](https://user-images.githubusercontent.com/10485682/170840525-c70056e3-2c99-4923-a186-848b5ff80213.gif)
+
