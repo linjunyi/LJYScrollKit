@@ -46,6 +46,6 @@ LJYScrollKi用于处理单页面添加多个页面的复杂应用场景，包括
     /// 且方法内部会根据currentPageIndex重新计算contentView的偏移位置。
     [_scrollPageHandler updatePageWidth:nPageWidth];
 ```
+![ShareHeaderDemo](https://user-images.githubusercontent.com/10485682/170821348-0830cc26-df99-40d1-9b27-7ea1b9fbeef1.gif)
 
-![ScrollPageHandlerDemo](https://user-images.githubusercontent.com/10485682/170841178-7b4232fc-cb44-454e-bbe4-e4fc2566e5e1.gif)
-
+![scrollPageHandlerDemo](https://user-images.githubusercontent.com/10485682/170841315-7832acf2-751d-4953-8f7c-ea61472c476b.gif)
