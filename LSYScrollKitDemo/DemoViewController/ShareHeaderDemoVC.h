@@ -5,11 +5,11 @@
 //  Created by 林君毅 on 2022/5/28.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseDemoViewController.h""
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ShareHeaderDemoVC : UIViewController
+@interface ShareHeaderDemoVC : BaseDemoViewController
 
 @end
 

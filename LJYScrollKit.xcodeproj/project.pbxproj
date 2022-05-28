@@ -20,9 +20,8 @@
 		A72DC19C28410C63008BD340 /* LSYScrollKitDemoUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A72DC19B28410C63008BD340 /* LSYScrollKitDemoUITestsLaunchTests.m */; };
 		A72DC1A728410F93008BD340 /* LJYScrollKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72DC14F28410B9B008BD340 /* LJYScrollKit.framework */; };
 		A72DC1AE28413082008BD340 /* ShareHeaderDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A72DC1AD28413082008BD340 /* ShareHeaderDemoVC.m */; };
-		A72DC1B6284160C6008BD340 /* HotTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A72DC1B5284160C6008BD340 /* HotTextViewController.m */; };
-		A72DC1BA284167FC008BD340 /* FakeDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = A72DC1B9284167FC008BD340 /* FakeDataFactory.m */; };
-		A72DC1BC284169AB008BD340 /* hotText.txt in Resources */ = {isa = PBXBuildFile; fileRef = A72DC1BB284169AA008BD340 /* hotText.txt */; };
+		A72DC1B6284160C6008BD340 /* ChildDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A72DC1B5284160C6008BD340 /* ChildDemoVC.m */; };
+		A72DC1C128420C3D008BD340 /* BaseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A72DC1C028420C3D008BD340 /* BaseDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,12 +69,11 @@
 		A72DC19B28410C63008BD340 /* LSYScrollKitDemoUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSYScrollKitDemoUITestsLaunchTests.m; sourceTree = "<group>"; };
 		A72DC1AC28413082008BD340 /* ShareHeaderDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareHeaderDemoVC.h; sourceTree = "<group>"; };
 		A72DC1AD28413082008BD340 /* ShareHeaderDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareHeaderDemoVC.m; sourceTree = "<group>"; };
-		A72DC1B4284160C6008BD340 /* HotTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotTextViewController.h; sourceTree = "<group>"; };
-		A72DC1B5284160C6008BD340 /* HotTextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotTextViewController.m; sourceTree = "<group>"; };
+		A72DC1B4284160C6008BD340 /* ChildDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChildDemoVC.h; sourceTree = "<group>"; };
+		A72DC1B5284160C6008BD340 /* ChildDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChildDemoVC.m; sourceTree = "<group>"; };
 		A72DC1B72841632D008BD340 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
-		A72DC1B8284167FC008BD340 /* FakeDataFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FakeDataFactory.h; sourceTree = "<group>"; };
-		A72DC1B9284167FC008BD340 /* FakeDataFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FakeDataFactory.m; sourceTree = "<group>"; };
-		A72DC1BB284169AA008BD340 /* hotText.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hotText.txt; sourceTree = "<group>"; };
+		A72DC1BF28420C3D008BD340 /* BaseDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDemoViewController.h; sourceTree = "<group>"; };
+		A72DC1C028420C3D008BD340 /* BaseDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,13 +149,7 @@
 				A72DC17428410C62008BD340 /* AppDelegate.m */,
 				A72DC17928410C62008BD340 /* ViewController.h */,
 				A72DC17A28410C62008BD340 /* ViewController.m */,
-				A72DC1AC28413082008BD340 /* ShareHeaderDemoVC.h */,
-				A72DC1AD28413082008BD340 /* ShareHeaderDemoVC.m */,
-				A72DC1B4284160C6008BD340 /* HotTextViewController.h */,
-				A72DC1B5284160C6008BD340 /* HotTextViewController.m */,
-				A72DC1B8284167FC008BD340 /* FakeDataFactory.h */,
-				A72DC1B9284167FC008BD340 /* FakeDataFactory.m */,
-				A72DC1BB284169AA008BD340 /* hotText.txt */,
+				A72DC1BE28420BDF008BD340 /* DemoViewController */,
 				A72DC1B72841632D008BD340 /* Macro.h */,
 				A72DC17F28410C63008BD340 /* Assets.xcassets */,
 				A72DC18128410C63008BD340 /* LaunchScreen.storyboard */,
@@ -189,6 +181,19 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A72DC1BE28420BDF008BD340 /* DemoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A72DC1B4284160C6008BD340 /* ChildDemoVC.h */,
+				A72DC1B5284160C6008BD340 /* ChildDemoVC.m */,
+				A72DC1AC28413082008BD340 /* ShareHeaderDemoVC.h */,
+				A72DC1AD28413082008BD340 /* ShareHeaderDemoVC.m */,
+				A72DC1BF28420C3D008BD340 /* BaseDemoViewController.h */,
+				A72DC1C028420C3D008BD340 /* BaseDemoViewController.m */,
+			);
+			path = DemoViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,7 +343,6 @@
 			files = (
 				A72DC18328410C63008BD340 /* LaunchScreen.storyboard in Resources */,
 				A72DC18028410C63008BD340 /* Assets.xcassets in Resources */,
-				A72DC1BC284169AB008BD340 /* hotText.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,9 +376,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A72DC1AE28413082008BD340 /* ShareHeaderDemoVC.m in Sources */,
-				A72DC1B6284160C6008BD340 /* HotTextViewController.m in Sources */,
+				A72DC1C128420C3D008BD340 /* BaseDemoViewController.m in Sources */,
+				A72DC1B6284160C6008BD340 /* ChildDemoVC.m in Sources */,
 				A72DC17B28410C62008BD340 /* ViewController.m in Sources */,
-				A72DC1BA284167FC008BD340 /* FakeDataFactory.m in Sources */,
 				A72DC17528410C62008BD340 /* AppDelegate.m in Sources */,
 				A72DC18628410C63008BD340 /* main.m in Sources */,
 			);

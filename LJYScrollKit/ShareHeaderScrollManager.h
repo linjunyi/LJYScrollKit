@@ -23,12 +23,12 @@ static inline bool AnchorRangeEqual(AnchorRange r1, AnchorRange r2) {
     return r1.min == r2.min && r1.max == r2.max;
 }
 
-/// 多个ViewController共享一个Header View，当ViewController滑动时，Header View联动
+/// 多个ScrollView共享一个Header View，当ScrollView滑动时，Header View联动
 @interface ShareHeaderScrollManager : NSObject
 
 /// y坐标滑动的锚点
 ///
-///  - superview的竖直偏移在min~max的范围内时，HeaderView才会与下方的ViewController联动。
+///  - mainView的竖直偏移在min~max的范围内时，Header View才会与下方的ScrollView联动。
 ///
 /// @note max最大值内部限制为mainView.content.height-mainView.height。
 @property (nonatomic, assign) AnchorRange y_anchor;
@@ -38,7 +38,7 @@ static inline bool AnchorRangeEqual(AnchorRange r1, AnchorRange r2) {
 
 /// 初始化方法，使用-init不能正常工作
 ///
-/// @param mainView 多个ViewController和单一HeaderView的共同superView
+/// @param mainView 多个ScrollView和单一HeaderView的共同superView
 /// @param scrollBlock 滑动时调用，isMainView:是否是mainView在滑动
 ///
 /// @note 外部无需设置mainView的contentSize，内部会自动设置

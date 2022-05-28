@@ -9,9 +9,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HotTextViewController : UIViewController
+@interface ChildDemoVC : UIViewController
 
-- (NSArray<UIScrollView *> *)currentScrollViews;
+- (id)initWithIndex:(NSInteger)index listCount:(NSInteger)listCount;
+
+- (UIScrollView *)currentScrollView;
 
 @end
 
