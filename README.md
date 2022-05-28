@@ -2,7 +2,7 @@
 LJYScrollKi用于处理单页面添加多个scrollView的复杂应用场景。
 
 ## 实现功能
-### ShareHeaderScrollVCManager
+### ShareHeaderScrollManager
 * 一个父ScrollView嵌套若干个子ScrollView, 实现父子ScrollView联动，且滑动到一定范围时顶部悬浮窗。
 
 ```objc
