@@ -19,15 +19,22 @@ typedef NS_ENUM(NSInteger,ScrollMenuSelectedItemPosition) {
 
 @end
 @interface ScrollMenuColorConfig :NSObject
+/// 未选中标题字体
 @property (nonatomic, strong) UIFont *normalFont;
+/// 选中标题字体
 @property (nonatomic, strong) UIFont *selectFont;
+/// 未选中标题颜色
 @property (nonatomic, strong) UIColor *normalColor;
+/// 选中标题颜色
 @property (nonatomic, strong) UIColor *selectColor;
-
+/// menu view可滑动区域背景色
 @property (nonatomic, strong) UIColor *scrollBgColor;
+/// menu view背景色
 @property (nonatomic, strong) UIColor *menuBgColor;
+/// 选中条颜色
 @property (nonatomic, strong) UIColor *selectedLineColor;
-@property (nonatomic, strong) UIColor *bottomSeperationLineViewColor; // 高度0.5的分隔线颜色
+/// 底部分割线颜色
+@property (nonatomic, strong) UIColor *bottomSeperationLineViewColor;
 @end
 
 @interface ScrollMenuConfig : ScrollMenuColorConfig

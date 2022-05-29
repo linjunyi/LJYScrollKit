@@ -7,3 +7,4 @@
 
 #import <LJYScrollKit/ShareHeaderScrollManager.h>
 #import <LJYScrollKit/ScrollPageHandler.h>
+#import <LJYScrollKit/ScrollMenuView.h>

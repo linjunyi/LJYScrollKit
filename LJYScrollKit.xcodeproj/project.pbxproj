@@ -28,6 +28,7 @@
 		A77F1C2E28436BE90095E0E6 /* ScrollPageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A77F1C2B28436BE90095E0E6 /* ScrollPageHandler.m */; };
 		A77F1C2F28436BE90095E0E6 /* LJYScrollKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A77F1C2C28436BE90095E0E6 /* LJYScrollKit.h */; };
 		A77F1C3028436BE90095E0E6 /* ScrollPageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A77F1C2D28436BE90095E0E6 /* ScrollPageHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A77F1C33284396F10095E0E6 /* MenuViewDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A77F1C32284396F10095E0E6 /* MenuViewDemoVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,8 @@
 		A77F1C2B28436BE90095E0E6 /* ScrollPageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollPageHandler.m; sourceTree = "<group>"; };
 		A77F1C2C28436BE90095E0E6 /* LJYScrollKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJYScrollKit.h; sourceTree = "<group>"; };
 		A77F1C2D28436BE90095E0E6 /* ScrollPageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollPageHandler.h; sourceTree = "<group>"; };
+		A77F1C31284396F10095E0E6 /* MenuViewDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuViewDemoVC.h; sourceTree = "<group>"; };
+		A77F1C32284396F10095E0E6 /* MenuViewDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuViewDemoVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +215,8 @@
 				A72DC1AD28413082008BD340 /* ShareHeaderDemoVC.m */,
 				A72DC1BF28420C3D008BD340 /* BaseDemoViewController.h */,
 				A72DC1C028420C3D008BD340 /* BaseDemoViewController.m */,
+				A77F1C31284396F10095E0E6 /* MenuViewDemoVC.h */,
+				A77F1C32284396F10095E0E6 /* MenuViewDemoVC.m */,
 			);
 			path = DemoViewController;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A72DC1AE28413082008BD340 /* ShareHeaderDemoVC.m in Sources */,
+				A77F1C33284396F10095E0E6 /* MenuViewDemoVC.m in Sources */,
 				A72DC1C128420C3D008BD340 /* BaseDemoViewController.m in Sources */,
 				A72DC1B6284160C6008BD340 /* ChildDemoVC.m in Sources */,
 				A72DC17B28410C62008BD340 /* ViewController.m in Sources */,

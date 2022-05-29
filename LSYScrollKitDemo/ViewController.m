@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import "ShareHeaderDemoVC.h"
 #import "ScrollPageHandlerDemoVC.h"
+#import "MenuViewDemoVC.h"
 
 static NSString *kTitleKey = @"titleKey";
 static NSString *kSelectorKey = @"selectorKey";
@@ -64,7 +65,7 @@ static NSString *kSelectorKey = @"selectorKey";
         _dataAry = @[
             @{kTitleKey : @"多级scrollview嵌套", kSelectorKey:NSStringFromSelector(@selector(showShareHeaderVC))},
             @{kTitleKey : @"为任意view添加左右翻页功能", kSelectorKey:NSStringFromSelector(@selector(showScrollPageHandlerVC))},
-            @{kTitleKey : @"自定义样式menu", kSelectorKey:NSStringFromSelector(@selector(showShareHeaderVC))},
+            @{kTitleKey : @"自定义样式menu", kSelectorKey:NSStringFromSelector(@selector(showMenuViewDemoVC))},
             @{kTitleKey : @"单页面包含多个子功能页面", kSelectorKey:NSStringFromSelector(@selector(showShareHeaderVC))},
         ];
     };
@@ -111,6 +112,12 @@ static NSString *kSelectorKey = @"selectorKey";
 
 - (void)showScrollPageHandlerVC {
     ScrollPageHandlerDemoVC *vc = [ScrollPageHandlerDemoVC new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)showMenuViewDemoVC {
+    MenuViewDemoVC *vc = [MenuViewDemoVC new];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
