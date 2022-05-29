@@ -37,6 +37,12 @@
     _tableView.frame = self.view.bounds;
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    _tableView.frame = self.view.bounds;
+    [_tableView reloadData];
+}
+
 - (void)setupView {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableView = tableView;
@@ -45,7 +51,6 @@
     }
     tableView.delegate = self;
     tableView.dataSource = self;
-    tableView.showsVerticalScrollIndicator = NO;
     tableView.backgroundColor = [UIColor clearColor];
     tableView.estimatedRowHeight = 0;
     tableView.estimatedSectionFooterHeight = 0;

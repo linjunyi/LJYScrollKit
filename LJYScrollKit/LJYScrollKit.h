@@ -6,3 +6,4 @@
 //
 
 #import <LJYScrollKit/ShareHeaderScrollManager.h>
+#import <LJYScrollKit/ScrollPageHandler.h>
