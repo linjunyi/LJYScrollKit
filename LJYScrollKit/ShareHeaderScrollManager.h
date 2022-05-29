@@ -29,11 +29,12 @@ static inline bool AnchorRangeEqual(AnchorRange r1, AnchorRange r2) {
 /// y坐标滑动的锚点
 ///
 ///  - mainView的竖直偏移在min~max的范围内时，Header View才会与下方的ScrollView联动。
+///  - 由update_y_anchor动态设置
 ///
 /// @note max最大值内部限制为mainView.content.height-mainView.height。
-@property (nonatomic, assign) AnchorRange y_anchor;
+@property (nonatomic, assign, readonly) AnchorRange y_anchor;
 
-/// 若不为nil，则外部设置的y_anchor将失效。锚点由block动态返回
+/// 动态设置y_anchor
 @property (nonatomic, copy, nullable) AnchorRange(^update_y_anchor)();
 
 /// 初始化方法，使用-init不能正常工作

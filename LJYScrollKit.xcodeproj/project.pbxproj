@@ -22,6 +22,12 @@
 		A72DC1AE28413082008BD340 /* ShareHeaderDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A72DC1AD28413082008BD340 /* ShareHeaderDemoVC.m */; };
 		A72DC1B6284160C6008BD340 /* ChildDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A72DC1B5284160C6008BD340 /* ChildDemoVC.m */; };
 		A72DC1C128420C3D008BD340 /* BaseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A72DC1C028420C3D008BD340 /* BaseDemoViewController.m */; };
+		A77F1C26284366FF0095E0E6 /* ScrollMenuView.h in Headers */ = {isa = PBXBuildFile; fileRef = A77F1C24284366FF0095E0E6 /* ScrollMenuView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A77F1C27284366FF0095E0E6 /* ScrollMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = A77F1C25284366FF0095E0E6 /* ScrollMenuView.m */; };
+		A77F1C2A28436B920095E0E6 /* ScrollPageHandlerDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A77F1C2828436B920095E0E6 /* ScrollPageHandlerDemoVC.m */; };
+		A77F1C2E28436BE90095E0E6 /* ScrollPageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A77F1C2B28436BE90095E0E6 /* ScrollPageHandler.m */; };
+		A77F1C2F28436BE90095E0E6 /* LJYScrollKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A77F1C2C28436BE90095E0E6 /* LJYScrollKit.h */; };
+		A77F1C3028436BE90095E0E6 /* ScrollPageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A77F1C2D28436BE90095E0E6 /* ScrollPageHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +80,13 @@
 		A72DC1B72841632D008BD340 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		A72DC1BF28420C3D008BD340 /* BaseDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDemoViewController.h; sourceTree = "<group>"; };
 		A72DC1C028420C3D008BD340 /* BaseDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDemoViewController.m; sourceTree = "<group>"; };
+		A77F1C24284366FF0095E0E6 /* ScrollMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollMenuView.h; sourceTree = "<group>"; };
+		A77F1C25284366FF0095E0E6 /* ScrollMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollMenuView.m; sourceTree = "<group>"; };
+		A77F1C2828436B920095E0E6 /* ScrollPageHandlerDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollPageHandlerDemoVC.m; sourceTree = "<group>"; };
+		A77F1C2928436B920095E0E6 /* ScrollPageHandlerDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollPageHandlerDemoVC.h; sourceTree = "<group>"; };
+		A77F1C2B28436BE90095E0E6 /* ScrollPageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollPageHandler.m; sourceTree = "<group>"; };
+		A77F1C2C28436BE90095E0E6 /* LJYScrollKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJYScrollKit.h; sourceTree = "<group>"; };
+		A77F1C2D28436BE90095E0E6 /* ScrollPageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollPageHandler.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +148,11 @@
 		A72DC15128410B9B008BD340 /* LJYScrollKit */ = {
 			isa = PBXGroup;
 			children = (
+				A77F1C2C28436BE90095E0E6 /* LJYScrollKit.h */,
+				A77F1C2D28436BE90095E0E6 /* ScrollPageHandler.h */,
+				A77F1C2B28436BE90095E0E6 /* ScrollPageHandler.m */,
+				A77F1C24284366FF0095E0E6 /* ScrollMenuView.h */,
+				A77F1C25284366FF0095E0E6 /* ScrollMenuView.m */,
 				A72DC15228410B9B008BD340 /* LJYScrollKit.h */,
 				A72DC16928410BD8008BD340 /* ShareHeaderScrollManager.h */,
 				A72DC16A28410BD8008BD340 /* ShareHeaderScrollManager.m */,
@@ -186,6 +204,8 @@
 		A72DC1BE28420BDF008BD340 /* DemoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A77F1C2928436B920095E0E6 /* ScrollPageHandlerDemoVC.h */,
+				A77F1C2828436B920095E0E6 /* ScrollPageHandlerDemoVC.m */,
 				A72DC1B4284160C6008BD340 /* ChildDemoVC.h */,
 				A72DC1B5284160C6008BD340 /* ChildDemoVC.m */,
 				A72DC1AC28413082008BD340 /* ShareHeaderDemoVC.h */,
@@ -204,6 +224,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A72DC16028410B9B008BD340 /* LJYScrollKit.h in Headers */,
+				A77F1C3028436BE90095E0E6 /* ScrollPageHandler.h in Headers */,
+				A77F1C26284366FF0095E0E6 /* ScrollMenuView.h in Headers */,
+				A77F1C2F28436BE90095E0E6 /* LJYScrollKit.h in Headers */,
 				A72DC16B28410BD8008BD340 /* ShareHeaderScrollManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,7 +390,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A77F1C27284366FF0095E0E6 /* ScrollMenuView.m in Sources */,
 				A72DC16C28410BD8008BD340 /* ShareHeaderScrollManager.m in Sources */,
+				A77F1C2E28436BE90095E0E6 /* ScrollPageHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +406,7 @@
 				A72DC17B28410C62008BD340 /* ViewController.m in Sources */,
 				A72DC17528410C62008BD340 /* AppDelegate.m in Sources */,
 				A72DC18628410C63008BD340 /* main.m in Sources */,
+				A77F1C2A28436B920095E0E6 /* ScrollPageHandlerDemoVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

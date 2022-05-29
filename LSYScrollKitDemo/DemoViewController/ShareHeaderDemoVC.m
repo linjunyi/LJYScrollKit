@@ -21,6 +21,7 @@ static NSInteger kButtonTag = 500;
 @property (nonatomic, strong) UIScrollView *mainScrollView;
 @property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) UIView *containerView;
+@property (nonatomic, strong) UILabel *titleLbl;
 @property (nonatomic, strong) NSMutableArray *buttonAry;
 
 @end
@@ -33,21 +34,35 @@ static NSInteger kButtonTag = 500;
     [self setupView];
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    _mainScrollView.frame = self.view.bounds;
+    
+    CGFloat viewWidth = self.view.frame.size.width;
+    CGFloat viewHeight = self.view.frame.size.height;
+    _headerView.frame = CGRectMake(0, 0, viewWidth, HeaderHeight);
+    _containerView.frame = CGRectMake(0, HeaderHeight, viewWidth*3, viewHeight-FloatMenuHeight);
+    _titleLbl.frame = CGRectMake(0, 80, viewWidth, 60);
+    CGFloat x = 0;
+    for (UIView *sv in _containerView.subviews) {
+        sv.frame = CGRectMake(x, 0, viewWidth, _containerView.frame.size.height);
+        x += sv.frame.size.width;
+    }
+}
+
 - (void)setupView {
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    _mainScrollView = [[UIScrollView alloc] init];
     if (@available(iOS 11.0, *)) {
         _mainScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     [self.view insertSubview:_mainScrollView atIndex:0];
     
-    CGFloat viewWidth = self.view.frame.size.width;
-    CGFloat viewHeight = self.view.frame.size.height;
-    
-    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, HeaderHeight)];
+    _headerView = [[UIView alloc] init];
     [_mainScrollView addSubview:_headerView];
     [self setupHeaderView];
     
-    _containerView = [[UIView alloc] initWithFrame:CGRectMake(0, HeaderHeight, viewWidth*3, viewHeight-FloatMenuHeight)];
+    _containerView = [[UIView alloc] init];
     [_mainScrollView addSubview:_containerView];
     [self setupContainerView];
     
@@ -57,15 +72,15 @@ static NSInteger kButtonTag = 500;
 - (void)setupHeaderView {
     _headerView.backgroundColor = UIColorFromRGB(0xdfdfdf);
  
-    UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 80, self.view.frame.size.width, 60)];
-    titleLbl.text = @"一个父ScrollView嵌套多个子ScrollView";
-    titleLbl.textAlignment = NSTextAlignmentCenter;
-    titleLbl.font = [UIFont boldSystemFontOfSize:15];
-    titleLbl.textColor = UIColorFromRGB(0x3c464f);
-    [_headerView addSubview:titleLbl];
+    _titleLbl = [[UILabel alloc] init];
+    _titleLbl.text = @"一个父ScrollView嵌套多个子ScrollView";
+    _titleLbl.textAlignment = NSTextAlignmentCenter;
+    _titleLbl.font = [UIFont boldSystemFontOfSize:15];
+    _titleLbl.textColor = UIColorFromRGB(0x3c464f);
+    [_headerView addSubview:_titleLbl];
     
     CGFloat x = 80;
-    CGFloat y = _headerView.frame.size.height - 40;
+    CGFloat y = HeaderHeight - 40;
     _buttonAry = [NSMutableArray new];
     for (NSInteger i = 0; i < 3; i++) {
         UIButton *button = [self createBtnWith:[NSString stringWithFormat:@"列表%zd", i+1]];
@@ -79,36 +94,28 @@ static NSInteger kButtonTag = 500;
 }
 
 - (void)setupContainerView {
-    CGFloat x = 0;
-    
     ChildDemoVC *subVC1 = [[ChildDemoVC alloc] initWithIndex:1 listCount:20];
     [self addChildViewController:subVC1];
-    subVC1.view.frame = CGRectMake(x, 0, self.view.frame.size.width, _containerView.frame.size.height);
     [_containerView addSubview:subVC1.view];
-    x += subVC1.view.frame.size.width;
     
     ChildDemoVC *subVC2 = [[ChildDemoVC alloc] initWithIndex:2 listCount:50];
     [self addChildViewController:subVC2];
-    subVC2.view.frame = CGRectMake(x, 0, self.view.frame.size.width, _containerView.frame.size.height);
     [_containerView addSubview:subVC2.view];
-    x += subVC2.view.frame.size.width;
     
     ChildDemoVC *subVC3 = [[ChildDemoVC alloc] initWithIndex:3 listCount:3];
     [self addChildViewController:subVC3];
-    subVC3.view.frame = CGRectMake(x, 0, self.view.frame.size.width, _containerView.frame.size.height);
     [_containerView addSubview:subVC3.view];
     
     _scrollManager = [[ShareHeaderScrollManager alloc] initWithMainView:_mainScrollView scrollBlock:
                       ^(UIScrollView * _Nonnull scrollView, BOOL isMainView) {
         // 滑动回调
     }];
+    
     // mainView的竖直偏移在min~max的范围内时，Header View才会与下方的ScrollView联动。
     // max最大值内部限制为mainView.content.height-mainView.height。
-    _scrollManager.y_anchor = AnchorRangeMake(0, HeaderHeight-FloatMenuHeight);
-    // 动态获取y_anchor
-    // _scrollManager.update_y_anchor = ^AnchorRange{
-    //     return AnchorRangeMake(0, _headerView.frame.origin.x+_headerView.frame.size.height-FloatMenuHeight);
-    // };
+     _scrollManager.update_y_anchor = ^AnchorRange{
+         return AnchorRangeMake(0, _headerView.frame.origin.x+_headerView.frame.size.height-FloatMenuHeight);
+     };
     [_scrollManager addScrollViews:@[
         [subVC1 currentScrollView],
         [subVC2 currentScrollView],
@@ -126,8 +133,9 @@ static NSInteger kButtonTag = 500;
             btn.backgroundColor = [UIColor whiteColor];
         }
     }
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:.3 animations:^{
-        _containerView.frame = CGRectMake(-index*self.view.frame.size.width, _containerView.frame.origin.y, _containerView.frame.size.width, _containerView.frame.size.height);
+        weakSelf.containerView.frame = CGRectMake(-index*weakSelf.view.frame.size.width, weakSelf.containerView.frame.origin.y, weakSelf.containerView.frame.size.width, weakSelf.containerView.frame.size.height);
     }];
 }
 

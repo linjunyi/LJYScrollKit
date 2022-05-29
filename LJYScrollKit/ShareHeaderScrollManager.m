@@ -84,6 +84,10 @@
     if ([keyPath isEqualToString:NSStringFromSelector(@selector(contentOffset))]) {
         if ([object isKindOfClass:[UIScrollView class]]) {
             UIScrollView *scrollView = (UIScrollView *)object;
+            if (CGSizeEqualToSize(_mainView.frame.size, CGSizeZero)) {
+                return;
+            }
+            
             if (scrollView.forbidFixScroll) {
                 scrollView.forbidFixScroll = NO;
                 return;
@@ -98,29 +102,32 @@
 }
 
 - (void)setY_anchor:(AnchorRange)y_anchor {
+    if (CGSizeEqualToSize(_mainView.frame.size, CGSizeZero)) {
+        return;
+    }
+    
     _y_anchor = y_anchor;
     _mainView.contentSize = CGSizeMake(_mainView.contentSize.width, y_anchor.max+_mainView.frame.size.height);
+}
+
+- (void)resetY_anchor {
+    if (_update_y_anchor) {
+        AnchorRange other_y_anchor = _update_y_anchor();
+        if (AnchorRangeEqual(_y_anchor, other_y_anchor) == NO) {
+            [self setY_anchor:other_y_anchor];
+        }
+    }
 }
 
 #pragma mark -
 
 - (CGFloat)maxContentOffsetY {
-    if (_update_y_anchor) {
-        AnchorRange other_y_anchor = _update_y_anchor();
-        if (AnchorRangeEqual(_y_anchor, other_y_anchor) == NO) {
-            [self setY_anchor:other_y_anchor];
-        }
-    }
+    [self resetY_anchor];
     return MIN(_mainView.contentSize.height-_mainView.frame.size.height, _y_anchor.max);
 }
 
 - (CGFloat)minContentOffsetY {
-    if (_update_y_anchor) {
-        AnchorRange other_y_anchor = _update_y_anchor();
-        if (AnchorRangeEqual(_y_anchor, other_y_anchor) == NO) {
-            [self setY_anchor:other_y_anchor];
-        }
-    }
+    [self resetY_anchor];
     return _y_anchor.min;
 }
 
@@ -151,7 +158,11 @@
 }
 
 - (void)fixScrollForMainView {
-    CGFloat fixOffset = _mainView.contentOffset.y + _mainView.frame.size.height - _mainView.contentSize.height;
+    [self resetY_anchor];
+    CGFloat fixOffset = 0;
+    if (_mainView.contentSize.height > _mainView.frame.size.height) {
+        fixOffset = _mainView.contentOffset.y + _mainView.frame.size.height - _mainView.contentSize.height;
+    }
     if (fixOffset > 0) {
         for (UIScrollView *scrollV in _scrollViews) {
             if ([self isActive:scrollV]) {

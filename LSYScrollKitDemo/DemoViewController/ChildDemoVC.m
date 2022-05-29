@@ -39,7 +39,9 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+    CGPoint contentOffset = _tableView.contentOffset;
     _tableView.frame = self.view.bounds;
+    _tableView.contentOffset = contentOffset;
     [_tableView reloadData];
 }
 
