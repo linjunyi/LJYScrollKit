@@ -28,8 +28,7 @@ LJYScrollKi用于处理单页面添加多个页面的复杂应用场景，包括
     ]];
 ```
 
-![ShareHeaderDemo](https://user-images.githubusercontent.com/10485682/170842989-413132dc-31f6-4c94-a52d-f819974c62e4.gif)
-
+![ShareHeaderDemo](https://user-images.githubusercontent.com/10485682/170923492-3b68158c-33a7-472f-8c6b-f029ba1c280b.gif)
 
 ### ScrollPageHandler
 将view等分成若干页面，并为其添加左右翻页功能。
@@ -51,10 +50,24 @@ LJYScrollKi用于处理单页面添加多个页面的复杂应用场景，包括
     [_scrollPageHandler updatePageWidth:nPageWidth];
 ```
 
-![ScrollPageHandlerDemo](https://user-images.githubusercontent.com/10485682/170843631-beafdf13-fe43-426b-999f-19282391218a.gif)
+![ScrollPageHandlerDemo](https://user-images.githubusercontent.com/10485682/170923091-3468dffc-c3ef-455c-accf-6e8b85be9275.gif)
 
-### ScrollPageHandler
+### ScrollMenuView
 自定义样式menu
 
-![ScrollMenuDemo](https://user-images.githubusercontent.com/10485682/170922159-24502c84-b159-4383-b7f0-0ba611111c45.gif)
+```objc
+    /// 初始化config
+    ScrollMenuConfig *config = [[ScrollMenuConfig alloc] init];
+    config.normalFont = [UIFont systemFontOfSize:15];
+    config.selectFont = [UIFont italicSystemFontOfSize:19];
+    config.selectColor = UIColorFromRGB(0x14161A);
+    config.normalColor = UIColorFromRGB(0x73757B);
+    config.selectedPosition = ScrollMenuSelectedItemPositionMiddle;
+    
+    // 生成menuView
+    ScrollMenuView *menuView = [[ScrollMenuView alloc] initWithTitleArray:titles config:config];
+    menuView.frame = CGRectMake(0, 100, self.view.frame.size.width, 44);
+    [self.view addSubview:menuView];
+```
 
+![ScrollMenuDemo](https://user-images.githubusercontent.com/10485682/170922754-99fbe598-de4c-463e-ae11-3fcc4d45165c.gif)
