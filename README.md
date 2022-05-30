@@ -3,7 +3,6 @@ LJYScrollKi用于处理单页面添加多个页面的复杂应用场景，包括
  - 多级scrollview嵌套
  - 为任意view添加左右翻页功能
  - 自定义样式menu
- - 单页面包含多个子功能页面
 
 ## 实现功能
 ### ShareHeaderScrollManager
