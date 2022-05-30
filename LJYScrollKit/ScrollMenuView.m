@@ -32,7 +32,6 @@
 @end
 
 @interface MenuItemButton : UIButton
-@property (nonatomic, strong) UIView *bottomLine;
 @property (nonatomic) NSUInteger index;
 @property (nonatomic, strong) ScrollMenuConfig *config;
 @end
@@ -43,22 +42,8 @@
     if (self = [super init]) {
         [self setTitle:title forState:UIControlStateNormal];
         _index = index;
-        [self setupView];
     }
     return self;
-}
-
-- (void)setupView {
-    _bottomLine = [UIView new];
-    _bottomLine.backgroundColor = [UIColor colorWithRed:0 green:153/255.0 blue:1 alpha:1.0];
-    _bottomLine.hidden = YES;
-    [self addSubview:_bottomLine];
-//    [_bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.bottomLine.superview);
-//        make.centerX.equalTo(self.bottomLine.superview);
-//        make.width.equalTo(self.titleLabel.mas_width);
-//        make.height.equalTo(@2);
-//    }];
 }
 
 - (void)setConfig:(ScrollMenuConfig*)config {
@@ -77,7 +62,6 @@
 
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
-//    _bottomLine.hidden = !selected;
     if (_config.selectFont) {
         [self.titleLabel setFont:selected ? _config.selectFont : _config.normalFont];
     }
@@ -127,6 +111,7 @@
     config.scrollBgColor = [UIColor whiteColor];
     config.itemGapWidth = 0;
     config.selectedLineBottomOffset = 0;
+    config.titleBgViewRadius = -1;
 }
 
 - (id)init {
@@ -244,13 +229,6 @@
         _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     [self addSubview:_scrollView];
-    if (_config.leftPadding > 0 || _config.rightPadding > 0) {
-//        [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.bottom.equalTo(_scrollView.superview);
-//            make.left.equalTo(_scrollView.superview).offset(_config.leftPadding);
-//            make.width.equalTo(_scrollView.superview).offset(-(_config.leftPadding + _config.rightPadding));
-//        }];
-    }
 
     BOOL haveTitleBg = (_config.titleBgViewColor && _config.titleBgViewHeight > 0)?YES:NO;
     if(haveTitleBg){
@@ -292,27 +270,10 @@
     _selectedBottomLine.backgroundColor = _config.selectedLineColor ?: _config.selectColor;
     [_scrollView addSubview:_selectedBottomLine];
 
-    _bottomLine = [UIView new];
-    _bottomLine.backgroundColor = _config.bottomSeperationLineViewColor?: [UIColor colorWithRed:223/255.0 green:223/255.0 blue:223/255.0 alpha:1.0];
+    _bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-4.5, self.bounds.size.width, 0.5)];
+    _bottomLine.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    _bottomLine.backgroundColor = _config.bottomSeperationLineViewColor?: [UIColor grayColor];
     [self addSubview:_bottomLine];
-//    [_bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self->_bottomLine.superview);
-//        make.leading.equalTo(self->_bottomLine.superview);
-//        make.trailing.equalTo(self->_bottomLine.superview);
-//        make.height.equalTo(@0.5);
-//    }];
-
-    if(haveTitleBg){
-        CGFloat width =  [_lastSelect resetTitleWithFitSize];
-        CGFloat height =  _config.titleBgViewHeight;
-        _titleBgView.layer.cornerRadius = height*0.5;
-
-//        [_titleBgView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.center.equalTo(self->_lastSelect);
-//            make.width.equalTo(@(width));
-//            make.height.equalTo(@(height));
-//        }];
-    }
 
     [self updateItemsFrameAndContentSize];
     [self adjustSelectedBottomLine:NO];
@@ -322,14 +283,14 @@
     if(_titleBgView == nil){
         return;
     }
-
+    
+    
     CGFloat width =  [_lastSelect resetTitleWithFitSize];
     CGFloat height =  _config.titleBgViewHeight;
-//    [_titleBgView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.center.equalTo(self->_lastSelect);
-//        make.width.equalTo(@(width));
-//        make.height.equalTo(@(height));
-//    }];
+    _titleBgView.layer.cornerRadius = _config.titleBgViewRadius >= 0 ? _config.titleBgViewRadius : height*0.5;
+    CGFloat centerX = self->_lastSelect.frame.origin.x+self->_lastSelect.frame.size.width/2;
+    CGFloat centerY = self->_lastSelect.frame.origin.y+self->_lastSelect.frame.size.height/2;
+    _titleBgView.frame = CGRectMake(centerX-width/2, centerY-height/2, width, height);
 
     if(animated){
         [UIView animateWithDuration:0.2 animations:^{
@@ -356,6 +317,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    _scrollView.frame = CGRectMake(_config.leftPadding, 0, self.frame.size.width-(_config.leftPadding + _config.rightPadding), self.frame.size.height);
+    [self updateTitleBgViewCons:_lastSelect animated:NO];
+    
     [self adjustOffsetWithSelectedItem:_lastSelect animated:NO];
 }
 

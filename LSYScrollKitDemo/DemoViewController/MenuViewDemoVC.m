@@ -26,6 +26,9 @@
     [super viewDidLayoutSubviews];
     _scrollView.frame = self.view.bounds;
     _scrollView.contentSize = CGSizeMake(0, 1000);
+    for (UIView *sv in _scrollView.subviews) {
+        sv.frame = CGRectMake(sv.frame.origin.x, sv.frame.origin.y, _scrollView.frame.size.width, sv.frame.size.height);
+    }
 }
 
 - (void)setupView {
@@ -50,6 +53,9 @@
     config.selectedLineHeight = 4;
     config.scrollBgColor = [UIColor whiteColor];
     config.menuButtonExtraWidth = 20;
+    config.titleBgViewColor = UIColorFromRGB(0x3c7cfc);
+    config.titleBgViewHeight = 30;
+    config.titleBgViewRadius = 8;
     [self addMenuView:160 titles:@[@"列表一", @"列表二", @"列表三", @"列表四"] config:config];
     
     config = [[ScrollMenuConfig alloc] init];
@@ -62,9 +68,9 @@
     config.selectedLineHeight = 6;
     config.selectedLineBottomOffset = 10;
     config.scrollBgColor = [UIColor systemYellowColor];
-    config.menuBgColor = [UIColor greenColor];
     config.menuButtonExtraWidth = 20;
-    ScrollMenuView *scrollMenuView = [self addMenuView:240 titles:@[@"列表一", @"列表二", @"列表三", @"列表一", @"列表二", @"列表三", @"列表一", @"列表二", @"列表三"] config:config];
+    config.selectedPosition = ScrollMenuSelectedItemPositionMiddle;
+    ScrollMenuView *scrollMenuView = [self addMenuView:240 titles:@[@"列表一", @"列表二", @"列表三", @"列表四", @"列表五", @"列表六", @"列表七", @"列表八", @"列表九"] config:config];
     
     [scrollMenuView gettingBottomLine].hidden = YES;
     UIView *selectedLine = [scrollMenuView getSelectBottomLine];

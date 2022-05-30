@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger,ScrollMenuSelectedItemPosition) {
-    ScrollMenuSelectedItemPositionMiddle = 0,
-    ScrollMenuSelectedItemPositionVisible,
+    ScrollMenuSelectedItemPositionMiddle = 0,  //当某个iitem被选中时，滑动使其居中
+    ScrollMenuSelectedItemPositionVisible,     //当某个iitem被选中时，滑动使其整体都位于可视区域之内
 };
 
 @protocol ScrollMenuViewDelegate <NSObject>
@@ -39,9 +39,17 @@ typedef NS_ENUM(NSInteger,ScrollMenuSelectedItemPosition) {
 
 @interface ScrollMenuConfig : ScrollMenuColorConfig
 
+/// 选中某个item后如何调整位置
+/// @see ScrollMenuSelectedItemPosition
 @property (nonatomic) ScrollMenuSelectedItemPosition selectedPosition;
-@property (nonatomic) CGFloat xOffset;//used when selectedPosition == Middle
+
+/// used when selectedPosition == Middle
+@property (nonatomic) CGFloat xOffset;
+
+/// item的宽度 = item标题宽度 + menuButtonExtraWidth
 @property (nonatomic) CGFloat menuButtonExtraWidth;
+
+/// item与item之间的间距
 @property (nonatomic) CGFloat itemGapWidth;
 
 @property (nonatomic) CGFloat selectedLineWidth;
@@ -49,11 +57,16 @@ typedef NS_ENUM(NSInteger,ScrollMenuSelectedItemPosition) {
 @property (nonatomic) CGFloat selectedLineRadius;
 @property (nonatomic) CGFloat selectedLineBottomOffset;// Default 0
 
+/// 可滑动区域的left、right
 @property (nonatomic) CGFloat leftPadding;// Default 0
 @property (nonatomic) CGFloat rightPadding;// Default 0
 
+/// 选中item的背景view
+/// @note 当 titleBgViewColor && titleBgViewHeight>0 展示
+/// @note 若未设置titleBgViewRadius，titleBgView的圆角默认为titleBgViewHeight/2
 @property (nonatomic) UIColor *titleBgViewColor;
 @property (nonatomic) CGFloat titleBgViewHeight;
+@property (nonatomic) CGFloat titleBgViewRadius;
 
 - (void)setColorConfig:(ScrollMenuColorConfig *)colorConfig;
 @end
@@ -73,7 +86,9 @@ typedef NS_ENUM(NSInteger,ScrollMenuSelectedItemPosition) {
 - (void)setSelectedIndex:(NSUInteger)index;
 - (void)setSelectedIndex:(NSUInteger)index animated:(BOOL)animated;
 
+/// 获取底部分割线
 - (UIView *)gettingBottomLine;
+/// 获取选中条
 - (UIView *)getSelectBottomLine;
 - (void)resetMenuConfig:(ScrollMenuColorConfig *)config;
 @end
