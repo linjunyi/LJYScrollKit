@@ -270,7 +270,7 @@
     _selectedBottomLine.backgroundColor = _config.selectedLineColor ?: _config.selectColor;
     [_scrollView addSubview:_selectedBottomLine];
 
-    _bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-4.5, self.bounds.size.width, 0.5)];
+    _bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-0.5, self.bounds.size.width, 0.5)];
     _bottomLine.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     _bottomLine.backgroundColor = _config.bottomSeperationLineViewColor?: [UIColor grayColor];
     [self addSubview:_bottomLine];
