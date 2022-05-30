@@ -53,3 +53,8 @@ LJYScrollKi用于处理单页面添加多个页面的复杂应用场景，包括
 
 ![ScrollPageHandlerDemo](https://user-images.githubusercontent.com/10485682/170843631-beafdf13-fe43-426b-999f-19282391218a.gif)
 
+### ScrollPageHandler
+自定义样式menu
+
+![ScrollMenuDemo](https://user-images.githubusercontent.com/10485682/170922159-24502c84-b159-4383-b7f0-0ba611111c45.gif)
+
